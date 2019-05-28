@@ -1,0 +1,16 @@
+<div
+  class="drop-down__wrapper"
+  [ngClass]="{disabled: isDisabled, hovered: isHovered, selected: isSelected}"
+  (mouseenter)="mouseEnterHandler()"
+  (mouseleave)="mouseLeaveHandler()"
+>
+  <div class="drop-down__visible" (click)="clickHandler()">
+    <p
+      class="drop-down__label"
+      [ngClass]="{selected: isSelected, hovered: isHovered}"
+    >Autocomplete</p>
+    <span class="drop-down__caret">
+      <app-caret [isDisabled]="isDisabled" [isSelected]="isSelected" [isHovered]="isHovered"></app-caret>
+    </span>
+  </div>
+</div>
