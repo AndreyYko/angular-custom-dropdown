@@ -1,1 +1,11 @@
-
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  .container {
+    min-width: 281px;
+    margin-right: 25px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

@@ -5,11 +5,14 @@ import { AppComponent } from './app.component';
 import { DropDownComponent } from './components/drop-down/drop-down.component';
 import { CaretComponent } from './components/drop-down/caret/caret.component';
 
+import { Filter } from './shared/pipes/filter.pipe';
+
 @NgModule({
   declarations: [
     AppComponent,
     DropDownComponent,
-    CaretComponent
+    CaretComponent,
+    Filter
   ],
   imports: [
     BrowserModule
