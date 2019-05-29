@@ -7,7 +7,7 @@
     <app-drop-down
       [isDisabled]="false"
       [autocomplete]="true"
-      [data]="['AB', 'ABC', 'ABCD', 'ABCDE', 'ABCDEF', 'SDFDC', 'LCCDC', 'EREOR', 'E']"
+      [data]="autocompleteDropDownData"
     ></app-drop-down>
   </div>
   <div class="container">
@@ -18,7 +18,7 @@
     <app-drop-down
       [isDisabled]="false"
       [select]="true"
-      [data]="['ABC', 'DEF', 'GHI', 'JKL', 'MNO']"
+      [data]="selectDropDownData"
     ></app-drop-down>
   </div>
   <div class="container">
@@ -29,8 +29,11 @@
     <app-drop-down
       [isDisabled]="false"
       [checkbox]="true"
-      [data]="['ABC', 'DEF', 'GHI', 'JKL', 'MNO']"
+      [data]="selectDropDownData"
     ></app-drop-down>
+  </div>
+  <div class="container checkbox">
+    <app-checkbox [label]="checkboxLabel"></app-checkbox>
   </div>
 </div>
 
