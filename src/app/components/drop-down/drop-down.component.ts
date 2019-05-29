@@ -11,6 +11,7 @@ export class DropDownComponent implements OnInit {
   @Input() checkbox = false;
   @Input() data: string[];
   @Input() isDisabled: boolean;
+  public initialData: string[];
   public isHovered = false;
   public isSelected = false;
   public currentValue: string | string[];
@@ -23,6 +24,7 @@ export class DropDownComponent implements OnInit {
     } else {
       this.currentValue = '';
     }
+    this.initialData = Object.assign([], this.data);
   }
   public mouseEnterHandler(): void {
     if (!this.isDisabled) { this.isHovered = true; }
@@ -35,6 +37,7 @@ export class DropDownComponent implements OnInit {
       if (value === false || value === true) {
         this.isSelected = value;
       } else {
+        if (this.isSelected === false && this.autocomplete) { this.currentValue = ''; }
         this.isSelected = !this.isSelected;
       }
       if (item) {
@@ -58,5 +61,11 @@ export class DropDownComponent implements OnInit {
   }
   public inputHandler(e): void {
     this.currentValue = e.target.value;
+  }
+  public resetCurrentValue(): void {
+    if (this.autocomplete) {
+      this.currentValue = '';
+      this.toggleDropDown(true);
+    }
   }
 }

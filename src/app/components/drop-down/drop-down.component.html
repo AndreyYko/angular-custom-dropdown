@@ -25,6 +25,7 @@
       (input)="inputHandler($event)"
       [value]="currentValue"
       *ngIf="autocomplete"
+      (click)="resetCurrentValue()"
     >
     <p
       class="drop-down__list-item"
@@ -33,7 +34,7 @@
       (click)="toggleDropDown(!isSelected, isSelected ? null : undefined)"
     >{{ isSelected && currentValue.length ? 'Select none' : currentValue }}</p>
     <p
-      *ngFor="let item of data | filter:currentValue:autocomplete"
+      *ngFor="let item of data | filter:currentValue:autocomplete:initialData"
       class="drop-down__list-item"
       [ngClass]="{active: false, checkbox: checkbox, checked: currentValue.includes(item)}"
       (click)="toggleDropDown(checkbox, item)"

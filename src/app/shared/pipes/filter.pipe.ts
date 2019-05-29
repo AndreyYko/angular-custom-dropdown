@@ -2,10 +2,10 @@ import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({ name: 'filter' })
 export class Filter implements PipeTransform {
-  transform(items: string[], value: string, isAutocomplete): any {
+  transform(items: string[], value: string, isAutocomplete, initialData): any {
     if (!isAutocomplete) { return items; }
     if (!items.length) { return items; }
-    if (!value) { return items.slice(0, 5); }
+    if (!value) { return initialData.slice(0, 5); }
     return items
       .sort((a: string, b: string): any => {
         a = a.toLowerCase();
