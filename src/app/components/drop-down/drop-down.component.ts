@@ -1,11 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 
 @Component({
   selector: 'app-drop-down',
   templateUrl: './drop-down.component.html',
   styleUrls: ['./drop-down.component.scss']
 })
-export class DropDownComponent implements OnInit {
+export class DropDownComponent implements OnInit, OnDestroy {
   @Input() autocomplete = false;
   @Input() select = false;
   @Input() checkbox = false;
@@ -25,6 +25,16 @@ export class DropDownComponent implements OnInit {
       this.currentValue = '';
     }
     this.initialData = Object.assign([], this.data);
+    document.body.addEventListener('click', this.bodyClickHandler.bind(this));
+  }
+  ngOnDestroy(): void {
+    document.body.removeEventListener('click', this.bodyClickHandler.bind(this));
+  }
+  private bodyClickHandler(event): void {
+    const target: HTMLElement = event.target;
+    if (target.tagName === 'BODY') {
+      this.isSelected = false;
+    }
   }
   public mouseEnterHandler(): void {
     if (!this.isDisabled) { this.isHovered = true; }
