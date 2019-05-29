@@ -47,7 +47,13 @@ export class DropDownComponent implements OnInit, OnDestroy {
       if (value === false || value === true) {
         this.isSelected = value;
       } else {
-        if (this.isSelected === false && this.autocomplete) { this.currentValue = ''; }
+        if (this.isSelected === false && this.autocomplete) {
+          this.currentValue = '';
+          setTimeout(() => {
+            const input: HTMLInputElement = document.querySelector('#autocomplete-input');
+            input.focus();
+          });
+        }
         this.isSelected = !this.isSelected;
       }
       if (item) {
